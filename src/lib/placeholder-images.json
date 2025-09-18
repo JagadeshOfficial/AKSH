@@ -1,0 +1,64 @@
+{
+  "placeholderImages": [
+    {
+      "id": "course1",
+      "description": "Abstract programming code background",
+      "imageUrl": "https://picsum.photos/seed/101/600/400",
+      "imageHint": "programming code"
+    },
+    {
+      "id": "course2",
+      "description": "Laptop with web development code",
+      "imageUrl": "https://picsum.photos/seed/102/600/400",
+      "imageHint": "web development"
+    },
+    {
+      "id": "course3",
+      "description": "Charts and graphs for data science",
+      "imageUrl": "https://picsum.photos/seed/103/600/400",
+      "imageHint": "data charts"
+    },
+    {
+      "id": "course4",
+      "description": "Neural network visualization",
+      "imageUrl": "https://picsum.photos/seed/104/600/400",
+      "imageHint": "neural network"
+    },
+    {
+      "id": "course5",
+      "description": "Graphic design tools and sketches",
+      "imageUrl": "https://picsum.photos/seed/105/600/400",
+      "imageHint": "design sketch"
+    },
+    {
+      "id": "course6",
+      "description": "Social media icons for digital marketing",
+      "imageUrl": "https://picsum.photos/seed/106/600/400",
+      "imageHint": "digital marketing"
+    },
+    {
+      "id": "job1",
+      "description": "Modern office space for a tech company",
+      "imageUrl": "https://picsum.photos/seed/201/100/100",
+      "imageHint": "tech office"
+    },
+    {
+      "id": "job2",
+      "description": "Server room for a data systems company",
+      "imageUrl": "https://picsum.photos/seed/202/100/100",
+      "imageHint": "server room"
+    },
+    {
+      "id": "job3",
+      "description": "UI design mockups on a desk",
+      "imageUrl": "https://picsum.photos/seed/203/100/100",
+      "imageHint": "ui design"
+    },
+    {
+      "id": "job4",
+      "description": "Financial charts on a computer screen",
+      "imageUrl": "https://picsum.photos/seed/204/100/100",
+      "imageHint": "financial chart"
+    }
+  ]
+}
