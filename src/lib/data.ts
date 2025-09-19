@@ -1,5 +1,9 @@
 import type { LucideIcon } from 'lucide-react';
-import { Book, Code, Film, MessageSquare, Briefcase, DollarSign, Settings, GraduationCap, LayoutDashboard, Star, FileText } from 'lucide-react';
+import {
+  Book, Code, MessageSquare, Briefcase, DollarSign, Settings, LayoutDashboard, Star, FileText,
+  Users, UserPlus, Shield, ClipboardCheck, Folder, HelpCircle, ArrowRightLeft, Undo, Ticket, Clock, FilePlus, CreditCard, QrCode, Mail,
+  Film
+} from 'lucide-react';
 
 export type NavItem = {
   title: string;
@@ -9,13 +13,84 @@ export type NavItem = {
   role: 'student' | 'instructor' | 'all';
 };
 
+export type InstructorNavGroup = {
+  title: string;
+  items: Omit<NavItem, 'role' | 'label'>[];
+};
+
+export const instructorNavGroups: InstructorNavGroup[] = [
+  {
+    title: 'Dashboard',
+    items: [
+      { title: 'Dashboard', href: '/instructor/dashboard', icon: LayoutDashboard },
+    ],
+  },
+  {
+    title: 'User Management',
+    items: [
+      { title: 'All Users', href: '/instructor/users', icon: Users },
+      { title: 'Add New User', href: '/instructor/users/new', icon: UserPlus },
+    ],
+  },
+  {
+    title: 'Course Management',
+    items: [
+      { title: 'All Courses', href: '/instructor/courses', icon: Book },
+      { title: 'Review Queue', href: '/instructor/courses/reviews', icon: ClipboardCheck },
+      { title: 'Categories', href: '/instructor/courses/categories', icon: Folder },
+    ],
+  },
+  {
+    title: 'Content Management',
+    items: [
+      { title: 'Uploaded Videos', href: '/instructor/content/videos', icon: Film },
+      { title: 'Uploaded Materials', href: '/instructor/content/materials', icon: FileText },
+    ],
+  },
+  {
+    title: 'Community Management',
+    items: [
+      { title: 'Discussion Forums', href: '/instructor/community/forums', icon: MessageSquare },
+      { title: 'Doubts Discussions', href: '/instructor/community/doubts', icon: HelpCircle },
+      { title: 'Reviews & Comments', href: '/instructor/community/reviews', icon: Star },
+    ],
+  },
+  {
+    title: 'Financial Management',
+    items: [
+      { title: 'Transactions', href: '/instructor/financials/transactions', icon: ArrowRightLeft },
+      { title: 'Payouts', href: '/instructor/financials/payouts', icon: DollarSign },
+      { title: 'Refunds', href: '/instructor/financials/refunds', icon: Undo },
+      { title: 'Discount Codes', href: '/instructor/financials/discounts', icon: Ticket },
+    ],
+  },
+  {
+    title: 'Job Board',
+    items: [
+      { title: 'All Job Postings', href: '/instructor/jobs', icon: Briefcase },
+      { title: 'Pending Approval', href: '/instructor/jobs/pending', icon: Clock },
+      { title: 'Add New Job', href: '/instructor/jobs/new', icon: FilePlus },
+    ],
+  },
+  {
+    title: 'Site Settings',
+    items: [
+      { title: 'General', href: '/instructor/settings/general', icon: Settings },
+      { title: 'Payment Gateways', href: '/instructor/settings/payment', icon: CreditCard },
+      { title: 'Scanner / QR Code Setup', href: '/instructor/settings/scanner', icon: QrCode },
+      { title: 'Email Templates', href: '/instructor/settings/email', icon: Mail },
+      { title: 'Pages', href: '/instructor/settings/pages', icon: FileText },
+      { title: 'Online Compiler Settings', href: '/instructor/settings/compiler', icon: Code },
+    ],
+  },
+];
+
 export const navItems: NavItem[] = [
   { title: 'Dashboard', href: '/dashboard', icon: LayoutDashboard, role: 'student' },
   { title: 'Courses', href: '/courses', icon: Book, role: 'student' },
   { title: 'Discussions', href: '/discussions', icon: MessageSquare, role: 'student' },
   { title: 'Job Board', href: '/jobs', icon: Briefcase, role: 'student' },
-  { title: 'Dashboard', href: '/instructor/dashboard', icon: LayoutDashboard, role: 'instructor' },
-  { title: 'AI Feedback', href: '/feedback', icon: Star, role: 'instructor' },
+  ...instructorNavGroups.flatMap(group => group.items.map(item => ({ ...item, role: 'instructor' as const }))),
   { title: 'Compiler', href: '/compiler', icon: Code, role: 'all' },
   { title: 'Payment', href: '/payment', icon: DollarSign, role: 'all' },
   { title: 'Settings', href: '/settings', icon: Settings, role: 'all' },
