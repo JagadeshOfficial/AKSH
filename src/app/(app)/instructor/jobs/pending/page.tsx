@@ -2,12 +2,20 @@
 
 import { useState } from "react";
 import { jobs } from "@/lib/data";
+type Job = {
+  id: string;
+  title: string;
+  company: string;
+  location: string;
+  imageId: string;
+  description?: string;
+};
 
 export default function PendingApprovalJobsPage() {
   const pendingJobs = jobs.filter((job) =>
     job.title.toLowerCase().includes("pending")
   );
-  const [selectedJob, setSelectedJob] = useState(null);
+  const [selectedJob, setSelectedJob] = useState<Job | null>(null);
 
   return (
     <div className="p-6 max-w-6xl mx-auto">

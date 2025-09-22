@@ -14,22 +14,26 @@ export default function Home() {
     else window.location.href = '/instructor/login';
   };
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-700 via-gray-500 to-gray-300">
+  <div className="flex flex-col min-h-screen bg-gradient-to-br from-indigo-200 via-white to-blue-100">
       {/* Header */}
-      <header className="p-4 flex justify-between items-center backdrop-blur-lg bg-white/60 shadow-lg rounded-b-xl border-b border-primary/10">
-        <Link href="/" className="flex items-center gap-2 font-semibold text-lg">
+      <header className="h-16 px-6 flex items-center justify-between bg-white/70 backdrop-blur-xl shadow-lg border-b border-gray-200 fixed top-0 left-0 w-full z-50" style={{boxShadow: '0 4px 24px 0 rgba(31, 38, 135, 0.10)', border: '1px solid rgba(255,255,255,0.12)'}}>
+        <Link href="/" className="flex items-center gap-3 font-bold text-xl">
           <Image
             src="/images/Logo.png"
             alt="AKSH-JAVA-HUB Logo"
-            width={100} // This will be the intrinsic width, good for accessibility/SEO
-            height={100} // This will be the intrinsic height
-            className="h-21 w-21 object-contain" // ✨ Change these values ✨
+            width={120}
+            height={40}
+            className="w-[120px] h-[40px]"
+            priority
           />
-          <span className=""></span>
         </Link>
-        <Button variant="ghost" onClick={handleLoginClick}>
-          Login <ArrowRight className="ml-2 h-4 w-4" />
-        </Button>
+        <nav className="flex items-center gap-6 mr-2">
+          <Link href="/about" className="font-medium text-indigo-700 hover:text-indigo-900 transition-colors">About</Link>
+          <Link href="/contact" className="font-medium text-indigo-700 hover:text-indigo-900 transition-colors">Contact</Link>
+          <Button variant="ghost" size="sm" className="font-semibold text-indigo-700 px-4 py-2" onClick={handleLoginClick}>
+            Login <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+        </nav>
       </header>
       {/* Login Choice Modal */}
       {showLoginChoice && (
@@ -52,26 +56,28 @@ export default function Home() {
       )}
 
       {/* Hero Section */}
-      <main className="flex-1 flex flex-col items-center justify-center px-4">
-        <section className="max-w-3xl w-full text-center space-y-6 py-16">
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tighter mb-4">
-            Master <span className="text-orange-400">Java Programming</span> <span className="text-white">Today!</span>
-          </h1>
-          <p className="text-xl text-gray-200 mb-8">
-            In-depth tutorials &bull; Practical examples &bull; Expert guidance
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button size="lg" className="w-full sm:w-auto transition-transform duration-200 hover:scale-105 hover:shadow-lg bg-indigo-600 text-white font-bold text-lg px-8 py-4 rounded-full">
-              EXPLORE TUTORIALS
-            </Button>
-            <Button size="lg" variant="outline" className="w-full sm:w-auto transition-transform duration-200 hover:scale-105 hover:shadow-lg border-2 border-white text-white font-bold text-lg px-8 py-4 rounded-full">
-              REQUEST INFO
-            </Button>
+  <main className="flex-1 flex flex-col items-center justify-center px-4">
+        <section className="w-full flex flex-col items-center justify-center py-24 mb-16">
+          <div className="bg-white/30 backdrop-blur-xl rounded-3xl shadow-2xl px-10 py-16 max-w-2xl text-center border border-gray-100">
+            <h1 className="text-6xl md:text-7xl font-extrabold tracking-tight mb-6 text-gray-900 drop-shadow-lg">
+              Master <span className="text-orange-500">Java Programming</span> <span className="text-indigo-700">Today!</span>
+            </h1>
+            <p className="text-2xl text-gray-700 mb-10 font-medium">
+              In-depth tutorials &bull; Practical examples &bull; Expert guidance
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Button size="lg" className="w-full sm:w-auto transition-transform duration-200 hover:scale-105 hover:shadow-lg bg-indigo-600 text-white font-bold text-lg px-8 py-4 rounded-full">
+                EXPLORE TUTORIALS
+              </Button>
+              <Button size="lg" variant="outline" className="w-full sm:w-auto transition-transform duration-200 hover:scale-105 hover:shadow-lg border-2 border-indigo-600 text-indigo-700 font-bold text-lg px-8 py-4 rounded-full">
+                REQUEST INFO
+              </Button>
+            </div>
           </div>
         </section>
 
         {/* Features Section */}
-        <section className="grid md:grid-cols-3 gap-8 max-w-5xl w-full py-8">
+  <section className="grid md:grid-cols-3 gap-16 max-w-5xl w-full py-16 mb-16 bg-white/70 rounded-3xl shadow-2xl backdrop-blur-xl border border-gray-100">
           <div className="bg-indigo-50 rounded-2xl p-8 shadow text-center flex flex-col items-center">
             <Video className="h-10 w-10 text-indigo-600 mb-4" />
             <h2 className="font-bold text-xl mb-2">Live Tutorials</h2>
@@ -90,7 +96,7 @@ export default function Home() {
         </section>
 
         {/* Popular Learning Paths */}
-        <section className="max-w-6xl w-full py-8">
+  <section className="max-w-6xl w-full py-12 mb-16 bg-white/70 rounded-3xl shadow-2xl backdrop-blur-xl border border-gray-100">
           <h2 className="text-4xl font-extrabold mb-10 text-center text-gray-900">Explore Popular Learning Paths</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
@@ -125,7 +131,7 @@ export default function Home() {
                 image: "/images/Devops.png"
               }
             ].map((path, idx) => (
-              <div key={idx} className="bg-white rounded-2xl shadow-lg flex flex-col justify-between border border-gray-100 hover:scale-105 transition-transform duration-200 overflow-hidden">
+              <Link key={idx} href={`/notes/${encodeURIComponent(path.title.replace(/\s+/g, '-').toLowerCase())}`} className="bg-white rounded-2xl shadow-lg flex flex-col justify-between border border-gray-100 hover:scale-105 transition-transform duration-200 overflow-hidden cursor-pointer">
                 <div className="w-full h-40 relative">
                   <Image src={path.image} alt={path.title} fill className="object-cover" />
                 </div>
@@ -137,13 +143,13 @@ export default function Home() {
                     <span className="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full font-bold">Free</span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </section>
 
         {/* Why Choose Section */}
-        <section className="max-w-6xl w-full py-16">
+  <section className="max-w-6xl w-full py-20 mb-16 bg-white/80 rounded-3xl shadow-2xl backdrop-blur-xl border border-gray-100">
           <h2 className="text-4xl font-extrabold mb-10 text-center text-gray-900">Why Choose AKSH Java Hub</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-indigo-50 rounded-2xl p-8 shadow text-center flex flex-col items-center">
@@ -166,11 +172,11 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-gray-100 py-12 px-4 mt-12">
+  <footer className="bg-gradient-to-br from-indigo-900 via-blue-900 to-gray-900 text-gray-100 py-20 px-12 mt-20 rounded-t-3xl shadow-2xl">
         <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-8 items-start">
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-2">
-              <Image src="/images/logo.png" alt="AKSH Java Hub Logo" width={80} height={40} />
+              <Image src="/images/Logo.png" alt="AKSH Java Hub Logo" width={80} height={40} />
               <span className="font-extrabold text-2xl">AKSH JAVA HUB</span>
             </div>
             <p className="text-gray-400 text-sm">Your comprehensive guide to mastering Java. From core concepts to advanced frameworks, we provide the resources you need to excel in your tech journey.</p>

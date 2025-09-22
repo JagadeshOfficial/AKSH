@@ -7,7 +7,7 @@ import ClientLayout from "./client-layout";
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
-  title: 'LMS Edge',
+  title: 'AKSH JAVA HUB',
   description: 'A modern Learning Management System',
 };
 

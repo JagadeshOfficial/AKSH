@@ -8,11 +8,26 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import Image from "next/image";
-import { courses, assignments, PlaceHolderImages } from "@/lib/data";
+import { courses, assignments } from "@/lib/data";
+
+const PlaceHolderImages = [
+  {
+    id: 'img-algebra',
+    imageUrl: '/placeholder.svg',
+    imageHint: 'An abstract geometric design for algebra',
+  },
+  {
+    id: 'img-history',
+    imageUrl: '/placeholder.svg',
+    imageHint: 'A historical scroll for world history',
+  },
+];
+
 
 export default function DashboardPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
+
   useEffect(() => {
     if (status === "unauthenticated") {
       router.push("/student/login");
@@ -21,15 +36,20 @@ export default function DashboardPage() {
       router.push("/instructor/dashboard");
     }
   }, [status, session, router]);
+
   if (status === "loading" || !session) {
     return <div className="flex items-center justify-center h-screen text-lg">Loading...</div>;
   }
+
   // Student dashboard content
   const enrolledCourses = courses.filter(c => c.enrolled);
   const upcomingAssignments = assignments.filter(a => !a.submitted).slice(0, 3);
   const recentGrades = assignments.filter(a => a.submitted && a.grade).slice(0, 3);
-  const getImage = (id: string) => PlaceHolderImages.find(img => img.id === id)?.imageUrl || '';
-  const getImageHint = (id: string) => PlaceHolderImages.find(img => img.id === id)?.imageHint || '';
+  
+  // FIXED: Provide a default image path instead of an empty string.
+  const getImage = (id: string) => PlaceHolderImages.find(img => img.id === id)?.imageUrl || '/placeholder.svg';
+  const getImageHint = (id: string) => PlaceHolderImages.find(img => img.id === id)?.imageHint || 'A placeholder image';
+
   return (
     <div className="flex flex-col gap-8 w-full max-w-3xl mx-auto">
       {/* My Courses */}
