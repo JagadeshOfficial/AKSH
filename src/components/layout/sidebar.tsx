@@ -11,9 +11,12 @@ import { Bell } from "lucide-react";
 export function Sidebar() {
   const pathname = usePathname();
 
-  const studentNav = navItems.filter(item => item.role === 'student' || item.role === 'all');
+  // Hide sidebar on instructor login page
+  if (pathname === "/instructor/login") {
+    return null;
+  }
 
-  // Show instructor sidebar only on instructor routes
+  const studentNav = navItems.filter(item => item.role === 'student' || item.role === 'all');
   const isInstructor = pathname.startsWith("/instructor");
   const isStudent = !isInstructor;
 
@@ -24,9 +27,9 @@ export function Sidebar() {
           <Image
             src="/images/Logo.png"
             alt="AKSH-JAVA-HUB Logo"
-            width={150} // This will be the intrinsic width, good for accessibility/SEO
-            height={150} // This will be the intrinsic height
-            className="h-21 w-21 object-contain" // ✨ Change these values ✨
+            width={150}
+            height={10}
+            className="h-21 w-21 object-contain"
           />
           <span className=""></span>
         </Link>

@@ -26,16 +26,18 @@ export default function JobsPage() {
             <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2">
                 {jobs.map(job => (
                     <Card key={job.id} className="flex flex-col sm:flex-row">
-                        <div className="p-4 sm:p-6 flex items-center justify-center sm:border-r">
-                           <Image
-                                alt={`${job.company} logo`}
-                                className="rounded-lg object-contain"
-                                height="80"
-                                width="80"
-                                src={getImage(job.imageId)}
-                                data-ai-hint={getImageHint(job.imageId)}
-                            />
-                        </div>
+                                                <div className="p-4 sm:p-6 flex items-center justify-center sm:border-r">
+                                                    {getImage(job.imageId) ? (
+                                                        <Image
+                                                            alt={`${job.company} logo`}
+                                                            className="rounded-lg object-contain"
+                                                            height={80}
+                                                            width={80}
+                                                            src={getImage(job.imageId)}
+                                                            data-ai-hint={getImageHint(job.imageId)}
+                                                        />
+                                                    ) : null}
+                                                </div>
                         <div className="p-4 sm:p-6 flex flex-col flex-1">
                             <div className="flex-1">
                                 <CardTitle className="text-lg">{job.title}</CardTitle>

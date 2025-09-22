@@ -18,10 +18,7 @@ export default function CoursesPage() {
                     <h1 className="text-3xl font-bold tracking-tight">Course Catalog</h1>
                     <p className="text-muted-foreground">Explore our wide range of courses and start learning today.</p>
                 </div>
-                 <Button>
-                    <PlusCircle className="mr-2 h-4 w-4" />
-                    Create New Course
-                </Button>
+                 
             </div>
             
             <div className="flex flex-col md:flex-row gap-4">

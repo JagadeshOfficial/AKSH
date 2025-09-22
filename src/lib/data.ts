@@ -37,7 +37,7 @@ export const instructorNavGroups: InstructorNavGroup[] = [
     items: [
       { title: 'All Courses', href: '/instructor/courses', icon: Book },
       { title: 'Review Queue', href: '/instructor/courses/reviews', icon: ClipboardCheck },
-      { title: 'Categories', href: '/instructor/courses/categories', icon: Folder },
+      { title: 'Update Courses', href: '/instructor/courses', icon: Book },
     ],
   },
   {
@@ -58,7 +58,7 @@ export const instructorNavGroups: InstructorNavGroup[] = [
   {
     title: 'Financial Management',
     items: [
-      { title: 'Transactions', href: '/instructor/financials/transactions', icon: ArrowRightLeft },
+      { title: 'Transactions', href: '/instructor/financial', icon: ArrowRightLeft },
       { title: 'Payouts', href: '/instructor/financials/payouts', icon: DollarSign },
       { title: 'Refunds', href: '/instructor/financials/refunds', icon: Undo },
       { title: 'Discount Codes', href: '/instructor/financials/discounts', icon: Ticket },
@@ -72,17 +72,7 @@ export const instructorNavGroups: InstructorNavGroup[] = [
       { title: 'Add New Job', href: '/instructor/jobs/new', icon: FilePlus },
     ],
   },
-  {
-    title: 'Site Settings',
-    items: [
-      { title: 'General', href: '/instructor/settings/general', icon: Settings },
-      { title: 'Payment Gateways', href: '/instructor/settings/payment', icon: CreditCard },
-      { title: 'Scanner / QR Code Setup', href: '/instructor/settings/scanner', icon: QrCode },
-      { title: 'Email Templates', href: '/instructor/settings/email', icon: Mail },
-      { title: 'Pages', href: '/instructor/settings/pages', icon: FileText },
-      { title: 'Online Compiler Settings', href: '/instructor/settings/compiler', icon: Code },
-    ],
-  },
+  // Site Settings section removed
 ];
 
 export const navItems: NavItem[] = [
@@ -117,6 +107,14 @@ export const jobs = [
     { id: 'j2', title: 'Backend Engineer', company: 'Data Systems LLC', location: 'New York, NY', imageId: 'job2' },
     { id: 'j3', title: 'UX/UI Designer', company: 'Creative Minds', location: 'San Francisco, CA', imageId: 'job3' },
     { id: 'j4', title: 'Data Analyst', company: 'Number Crunchers', location: 'Chicago, IL', imageId: 'job4' },
+    {
+      id: 'j5',
+      title: 'Backend Engineer - Pending',
+      company: 'Google',
+      location: 'Mountain View, CA',
+      imageId: 'job5',
+      description: `Work on scalable backend systems at Google. Requirements: Experience with distributed systems, Go/Java/Python, and cloud infrastructure.`,
+    },
 ];
 
 export const discussions = [

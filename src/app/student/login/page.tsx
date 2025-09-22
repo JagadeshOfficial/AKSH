@@ -2,7 +2,8 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { FcGoogle } from "react-icons/fc"; // Install react-icons if not present: npm install react-icons
+import { FcGoogle } from "react-icons/fc";
+import { signIn } from "next-auth/react";
 
 export default function StudentLogin() {
   const [isRegister, setIsRegister] = useState(false);
@@ -18,7 +19,7 @@ export default function StudentLogin() {
           {isRegister && (
             <input type="text" placeholder="Full Name" className="w-full border rounded px-4 py-2" />
           )}
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full" onClick={(e) => { e.preventDefault(); window.location.href = "/student/dashboard"; }}>
             {isRegister ? "Register" : "Login"}
           </Button>
         </form>
@@ -27,10 +28,10 @@ export default function StudentLogin() {
             className="w-full flex items-center justify-center gap-2 bg-white border text-gray-700 hover:bg-blue-50 hover:border-blue-400 hover:text-blue-700 transition-colors duration-200"
             variant="outline"
             type="button"
-            // onClick={handleGoogleSignIn} // Add your Google sign-in logic here
+            onClick={() => signIn("google", { callbackUrl: "/student/dashboard" })}
           >
             <FcGoogle className="h-5 w-5" />
-            Sign in with Google
+            {isRegister ? "Register with Google" : "Sign in with Google"}
           </Button>
         </div>
         <div className="mt-4 text-center">

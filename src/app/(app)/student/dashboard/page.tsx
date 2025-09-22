@@ -8,8 +8,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import Image from "next/image";
-import { courses, assignments } from "@/lib/data";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { courses, assignments, PlaceHolderImages } from "@/lib/data";
 
 export default function DashboardPage() {
   const { data: session, status } = useSession();
@@ -18,7 +17,6 @@ export default function DashboardPage() {
     if (status === "unauthenticated") {
       router.push("/student/login");
     }
-    // If logged in as instructor, redirect to instructor dashboard
     if (session?.user?.role === "instructor") {
       router.push("/instructor/dashboard");
     }

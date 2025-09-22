@@ -1,15 +1,29 @@
+"use client";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { FilePlus, Edit, Eye, Users, BarChart } from "lucide-react";
 
 export default function InstructorDashboard() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/instructor/login");
+    }
+  }, [status, router]);
+  if (status === "loading") {
+    return <div>Loading...</div>;
+  }
+  if (!session) return null;
   const recentSubmissions = [
     { student: "Charlie Brown", assignment: "Build a Personal Portfolio", course: "Web Development Bootcamp", date: "2024-09-19" },
     { student: "Diana Prince", assignment: "Basic Syntax and Variables", course: "Introduction to Programming", date: "2024-09-14" },
     { student: "Ethan Hunt", assignment: "Implement a Simple Neural Network", course: "AI and Machine Learning", date: "2024-09-24" },
   ];
-
   return (
     <div className="space-y-6">
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">

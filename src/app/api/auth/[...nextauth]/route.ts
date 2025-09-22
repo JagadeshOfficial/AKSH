@@ -18,8 +18,12 @@ const handler = NextAuth({
       if (url === '/' || url === baseUrl) {
         return '/';
       }
-      // Otherwise, always redirect to dashboard after login
-      return '/instructor/dashboard';
+      // If callbackUrl is set, use it (for student/instructor login)
+      if (url && url.startsWith(baseUrl)) {
+        return url;
+      }
+      // Otherwise, default to /dashboard (student) or /instructor/dashboard (instructor)
+      return '/studnet/dashboard';
     },
   },
 });
